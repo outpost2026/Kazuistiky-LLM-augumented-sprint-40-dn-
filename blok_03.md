@@ -20,7 +20,7 @@ Tento materiál není cenný díky geniálnímu řešení, ale proto, že popsan
 
 ## Situace
 
-Ve čtvrtém týdnu prošel skript pro klasifikaci a indexaci souborů deseti hlavními iteracemi. Cíl: postavit nástroj, který dokáže sémanticky kategorizovat lokální repozitář dokumentů a vytvořit strukturovaný manifest připravený pro RAG pipeline.
+Skript pro klasifikaci a indexaci souborů prošel deseti hlavními iteracemi. Cíl: postavit nástroj, který dokáže sémanticky kategorizovat lokální repozitář dokumentů a vytvořit strukturovaný manifest připravený pro RAG pipeline.
 
 Skript přestal fungovat. Co víc — s každou další iterací se jeho stav zhoršoval.
 
