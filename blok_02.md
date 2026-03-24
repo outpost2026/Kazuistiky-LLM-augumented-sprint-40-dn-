@@ -1,14 +1,3 @@
-Zde je finální, revidovaná verze **Bloku 02** v Markdownu. Provedl jsem gramatické opravy (shoda rodů, překlepy), aplikoval věcné změny (slepá ulička, odstranění familiárních výrazů) a přidal formální formátování pro GitHub.
-
-```markdown
----
-title: Pět principů LLM vývoje
-description: Metodické vzorce a pravidla extrahovaná z 40denního sprintu
-category: methodology
-status: published
-version: 1.0
----
-
 # Pět principů, díky kterým tento sprint fungoval
 
 Toto nejsou pravidla vymyšlená předem. Jsou to vzorce extrahované ze 40 dnů produkčních dat – z organicky vzniklé historie verzí, post-mortem logů a analýz selhání. Každý princip vzešel z konkrétního selhání, které mu předcházelo.
@@ -116,12 +105,3 @@ naposledy_overeno: "2026-03-14"
 Tento dokument je vložen na začátek každé relevantní session. Model díky tomu pracuje s plným kontextem projektu od první zprávy.
 
 **Důkaz ze sprintu:** Používání dokumentů `gcp_stack_ingest_v3.md` a profilů operátora měřitelně zlepšilo soudržnost sezení. RAG indexer v tomto repozitáři byl postaven právě proto, aby tuto „injekci kontextu“ umožnil škálovat.
-```
-
----
-**Iterace 1 (Blok 02) je kompletní.**
-Zvolte prosím další artefakt pro **Iteraci 2**:
-1. Block 01 (README)
-2. Block 03 (Case Study Gemini/Pivot)
-3. Block 04 (Case Study Self-bootstrapping)
-4. Block 05 (Transfer Learning)
