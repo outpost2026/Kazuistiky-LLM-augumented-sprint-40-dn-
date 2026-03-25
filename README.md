@@ -28,7 +28,7 @@ Všechny systémy běží 24/7 s téměř nulovými náklady na serverless infra
 ## Co tato případová studie zkoumá
 
 1. Jak byly LLM nástroje používány – a zneužívány – během sprintu
-2. Které konkrétní postupy produkovaly spolehlivý výstup vs. které způsobovaly regrese - kazuistika Gemini překlad
+2. Které konkrétní postupy produkovaly spolehlivý výstup vs. které způsobovaly regrese - **kazuistika Gemini překlad**
 3. Jakou roli hrály předchozí ne-softwarové zkušenosti v urychlení adopce
 4. Naměřený čas do kompetence v 6 technologických doménách
 
