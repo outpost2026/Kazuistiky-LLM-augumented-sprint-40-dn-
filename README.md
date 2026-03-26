@@ -1,10 +1,3 @@
----
-block: "01_prehled"
-verze: "1.0"
-datum: "2026-03-24"
-status: "final"
----
-
 # Od nuly k produkci: LLM augmentovaný vývojový sprint
 
 **Případová studie v AI augmentovaném učení**
@@ -35,6 +28,7 @@ Všechny systémy běží 24/7 s téměř nulovými náklady na serverless infra
 ## Pro koho to je
 
 Vývojáři začínající s LLM asistovanými workflow. Lidé, kteří narazili na situaci, kdy "AI mi pořád dává nefunkční kód". Kdokoliv, kdo zvažuje, zda samostatné LLM augmentované učení může produkovat produkční výsledky bez formálního školení nebo týmu.
+- Součástí repozitáře je rovněž *metodologie práce s LLM* jako **user case z fyzického světa** - rozhodovací procesy pro realizaci komplexního úkolu
 
 ---
 
