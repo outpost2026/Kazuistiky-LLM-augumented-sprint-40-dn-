@@ -2,9 +2,6 @@
 title: "Kazuistika: Když se z překladu stane přepis"
 subtitle: "Systematické selhání Gemini u úloh vyžadujících instrukční přesnost"
 datum: "2026-03-25"
-status: "published"
-zdroj_originál: "block_03_v2_toolchain_pivot.md"
-zdroj_výstup: "blok_03.md"
 ---
 
 # Kazuistika: Když se z překladu stane přepis
