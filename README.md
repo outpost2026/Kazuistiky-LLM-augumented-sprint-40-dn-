@@ -21,14 +21,14 @@ Všechny systémy běží 24/7 s téměř nulovými náklady na serverless infra
 ## Co tato případová studie zkoumá
 
 1. Jak byly LLM nástroje používány – a zneužívány – během sprintu
-2. Které konkrétní postupy produkovaly spolehlivý výstup vs. které způsobovaly regrese - **kazuistika Gemini překlad**
+2. Které konkrétní postupy produkovaly spolehlivý výstup vs. které způsobovaly regrese - **[kazuistika Gemini překlad](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/main/Kazuistika_Gemini_preklad.md)**
 3. Jakou roli hrály předchozí ne-softwarové zkušenosti v urychlení adopce
 4. Naměřený čas do kompetence v 6 technologických doménách
 
 ## Pro koho to je
 
 Vývojáři začínající s LLM asistovanými workflow. Lidé, kteří narazili na situaci, kdy "AI mi pořád dává nefunkční kód". Kdokoliv, kdo zvažuje, zda samostatné LLM augmentované učení může produkovat produkční výsledky bez formálního školení nebo týmu.
-- Součástí repozitáře je rovněž *metodologie práce s LLM* jako **user case z fyzického světa** - rozhodovací procesy pro realizaci komplexního úkolu
+- Součástí repozitáře je rovněž *[metodologie práce s LLM](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/main/metodika_prace_s_LLM.md)* jako **user case z fyzického světa** - rozhodovací procesy pro realizaci komplexního úkolu
 
 ---
 
