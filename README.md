@@ -36,8 +36,3 @@ Všechny systémy běží 24/7 s téměř nulovými náklady na serverless infra
 ## Pro koho to je
 
 Vývojáři začínající s LLM asistovanými workflow. Lidé, kteří narazili na situaci, kdy "AI mi pořád dává nefunkční kód". Kdokoliv, kdo zvažuje, zda samostatné LLM augmentované učení může produkovat produkční výsledky bez formálního školení nebo týmu.
-
----
-
-*Toto je živý dokument. Bloky jsou přidávány iterativně.*
-*Aktuální verze pokrývá: metodologii vývoje, způsoby selhání, klíčové principy.*
