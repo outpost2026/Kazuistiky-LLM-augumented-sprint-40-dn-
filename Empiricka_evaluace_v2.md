@@ -1,13 +1,5 @@
 # Empirická evaluace LLM modelů v deterministickém workflow
 
-## Případová studie operátora Outpost 2026
-
-**Autor:** Ondřej Soušek (Outpost 2026)  
-**Datum:** 27. března 2026  
-**Verze:** 1.0  
-**Licence:** CC BY-SA 4.0  
-**Vstupní data:** `Sémanticka_analyza_72hodinoveho_vlakna_v2.json` *(dostupné na vyžádání)*
-
 ---
 
 ## Abstrakt
