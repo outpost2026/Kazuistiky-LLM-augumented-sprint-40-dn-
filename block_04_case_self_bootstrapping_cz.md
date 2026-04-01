@@ -56,7 +56,7 @@ Tento scraper na sebe vydělal dřív, než skončil první týden projektu.
 
 Nový notebook nebyl jen na psaní kódů. Umožnil vyvinout telemetrický systém pro **16 kWh LiFePO4 baterii**, která napájí celou dílnu.
 
-Předtím byla baterie „černá skříňka“ – pokud by se přehřála nebo rozvážila, dozvěděl bych se to, až když by přestala fungovat (škoda cca 50 000 Kč).
+Předtím byla baterie „černá skříňka“ – pokud by se přehřála nebo se rozjely charakteristiky jednotlivých článku, dozvěděl bych se to, až když by přestala fungovat (škoda cca 50 000 Kč).
 
 **Dnes díky automatizaci:**
 
