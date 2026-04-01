@@ -4,9 +4,10 @@
 
 ---
 
-Tento repozitář dokumentuje 40denní sprint, ve kterém vývojář, osoba jako vy, bez předchozích zkušeností s Pythonem, cloudovou infrastrukturou nebo LLM nástroji postavil a nasadil produkční systémy na Google Cloud Platform – s využitím jazykových modelů jako primárního vývojového nástroje.
+Tento repozitář, respektive sada kazuistik ukazuje, jak při učení softwaru využít postupy z technické praxe a urychlit tak práci s AI. Obsahuje rozbory spolehlivosti modelů, metodiku pro stavbu IoT systémů a příklady automatizace, která řeší konkrétní úkoly v reálném světě.
+Cílem tohoto dokumentu není popsat vývojáře (k němu se autor ani nehlásí).
 
-Cílem tohoto dokumentu není popsat vývojáře. Je popsat *metody* – konkrétně které přístupy fungovaly, které selhaly a co o tom říkají data.
+Je popsat metody – konkrétně které přístupy fungovaly, které selhaly a co o tom říkají data.
 
 
 ---
