@@ -21,7 +21,7 @@ Tento dokument shrnuje 45denní empirickou evaluaci pěti frontier LLM modelů (
 
 ### 1.1. Kontext operátora
 
-Operátor buduje **Outpost 2026** — hybridní off-grid systém s důrazem na deterministický výstup, produkční spolehlivost a měřitelnou ROI. V rámci 90denního imerzního sprintu došlo k přechodu od „vibe codingu" k systematické metodice založené na:
+Autor buduje **Outpost 2026** — hybridní off-grid systém s důrazem na deterministický výstup, produkční spolehlivost a měřitelnou ROI. V rámci 45denního imerzního sprintu došlo k přechodu od „vibe codingu" k systematické metodice založené na:
 
 - **RAW_FIRST** — ověření surového vstupu před psaním kódu
 - **Binární MVP** — funkce buď produkuje očekávaný výstup, nebo neexistuje
