@@ -21,8 +21,8 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "vas_token")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "vase_id")
+TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN", "8725468950:AAH19oZ28SiZeaxILLdRLbMQLhJSpcnrA-I")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "1341669174")
 BUCKET_NAME      = os.environ.get("BUCKET_NAME", "gcp-miner-rag-data-01")
 
 # Absolutní cesty pro Ephemeral VM (nahrazuje původní /tmp)
