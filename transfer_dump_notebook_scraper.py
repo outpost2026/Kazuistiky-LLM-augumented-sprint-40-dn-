@@ -10,8 +10,8 @@ from google.cloud import storage
 
 # ── KONFIGURACE GCP & CESTY ──────────────────────────────────────────────────
 # SPRÁVNĚ: Hledáme klíč "TELEGRAM_TOKEN", pokud není, použijeme ten dlouhý řetězec
-TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "8725468950:AAH19oZ28SiZeaxILLdRLbMQLhJSpcnrA-I")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "1341669174")
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "token")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "id")
 BUCKET_NAME = os.environ.get("BUCKET_NAME", "gcp-miner-rag-data-01")
 
 # PROČ: V GCP lze zapisovat pouze do složky /tmp, zbytek disku je uzamčen.
