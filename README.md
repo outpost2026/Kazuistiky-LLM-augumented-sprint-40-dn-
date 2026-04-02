@@ -24,9 +24,10 @@ Je popsat metody – konkrétně které přístupy fungovaly, které selhaly a c
 
 ## Co bylo dosaženo
 
-- ETL scraping pipeline nasazené na GCP Cloud Run s Cloud Scheduler
-- Ingest meteorologických dat z ČHMÚ
-- Off-grid solární telemetrická pipeline: BMS data, LAZ LiDAR geodata, pvlib solární modelování
+- Stručný přehled aktuální cloudové architektury v souboru **[GCP_ingest.md](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/GCP/gcp_stack_ingest_v3.md)** 
+- ETL scraping pipeline nasazené na GCP Cloud Run s Cloud Scheduler - **[main_pipeline.py](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/GCP/transfer_dump_main.py)**
+- Ingest meteorologických dat z ČHMÚ - **[meteo_miner.py](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/GCP/transfer_dump_meteo_miner.py)**
+- Off-grid solární telemetrická pipeline: BMS data, LAZ LiDAR geodata, pvlib solární modelování, predikce SOC -  celá pipeline v **[branch LFP_predict_pipeline](https://github.com/outpost2026/Kazuistiky-LLM-sprint/tree/LFP_soc_predict_pipeline)**
 - Telegram notifikace pro všechny výstupy pipeline
 
 
