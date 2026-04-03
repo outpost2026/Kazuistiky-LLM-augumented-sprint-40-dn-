@@ -1,18 +1,16 @@
 # Outpost SOC Predictor
 
-Produkční systém pro predikci stavu nabití (SOC) LFP baterie na základě meteodat a přesného modelu terénu.
+>Produkční systém pro predikci stavu nabití (SOC) LFP baterie na základě meteodat a přesného modelu terénu.
 
 ---
 
-## Účel projektu
+### Účel projektu
 
 **Outpost SOC Predictor** predikuje denní přírůstek stavu nabití (ΔSOC) LiFePO₄ baterií kombinací meteorologických dat s pokročilým algoritmem teréního stínění. Systém poskytuje aktuální předpovědi ve strukturované podobě (CSV, JSON nebo formátované tabulky) na **N dní dopředu**.
 
-### Co je na tomto projektu specifické
+**Co je na tomto projektu specifické**
 
-Klíčová inovace je **maska horizontu** — LiDAR-odvozený profil terénu, který zohledňuje reálné stínění topografií a vegetací. To umožňuje predikci **čistého ΔSOC** (výroby minus spotřebu), což je přesně veličina, kterou vidí Battery Management System.
-
-**Klíčový výsledek:** Korelace maskovaného záření se skutečným ΔSOC vzrostla na **r = 0,953** oproti standardním DEM modelům.
+Klíčová inovace je **maska horizontu** — LiDAR-odvozený profil terénu, který zohledňuje reálné stínění topografií a vegetací. To umožňuje predikci **čistého ΔSOC** (výroby minus spotřebu), což je přesně veličina, kterou vidí Battery Management System. **Výsledek:** Korelace maskovaného záření se skutečným ΔSOC vzrostla na **r = 0,953** oproti standardním DEM modelům.
 
 ---
 
@@ -22,6 +20,12 @@ Klíčová inovace je **maska horizontu** — LiDAR-odvozený profil terénu, kt
 - **Hybridní systémy s úložištěm**: Předpověď dostupné energie pro řízení zátěže
 - **Mikrosítě**: Plánování na více dní pro řízení na straně poptávky
 - **Plánování údržby**: Optimalizace cyklů střídače podle předpovídaného nabíjení
+
+---
+
+### *Setup pro replikaci celé architektury v jednoho souboru json*
+- universální použití (libovolná topologie, lokalita, FV, bms a další proměnné)
+- stačí stáhnout jeden json soubor **[Setup_pipeline_soc_prediction.json](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/LFP_soc_predict_pipeline/Setup_pipeline_soc_prediction.json)** - obsahuje celou kuchařku s postupem
 
 ---
 
@@ -84,7 +88,7 @@ Nakalibrován na datech z března 2026 (srovnání denního součtu záření vs
 
 ---
 
-## ⚙️ Hardwarový kontext
+## Hardwarový kontext
 
 | Komponenta | Specifikace |
 |------------|-------------|
@@ -96,25 +100,13 @@ Nakalibrován na datech z března 2026 (srovnání denního součtu záření vs
 
 ---
 
-## Rychlý start
-
-### Instalace
-
-```bash
-# Klonování repozitáře
-git clone https://github.com/yourusername/outpost-soc-predictor.git
-cd outpost-soc-predictor
-
-# Instalace závislostí
-pip install -r requirements.txt
-
-# (Volitelné) Vygenerování masky horizontu z LiDAR dat
-python horizon_profile_outpost.py --laz /cesta/k/dmr5g.laz --output horizon_profile.json
-```
 
 ### Základní použití
 
 ```bash
+# (Volitelné) Vygenerování masky horizontu z LiDAR dat
+python horizon_profile_outpost.py --laz /cesta/k/dmr5g.laz --output horizon_profile.json
+
 # Stažení předpovědi počasí a aplikace teréní masky
 python outpost_meteo_etl_v3.py --days 7 --output outpost_meteo_forecast.csv
 
@@ -144,31 +136,17 @@ volitelné argumenty:
   --no-api                Vynutit offline režim pouze s lineárním modelem
 ```
 
-### Příklad výstupu - zde [reálný výstup predikce](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/LFP_soc_predict_pipeline/forecast.csv)
-
-```
-Predikce SOC – Start: 84,9%  |  Model: linear_offline_v3  |  Noční úbytek: −3,0%
-
-Datum       Záření  Oblaka   Ráno %  ΔSOC     Večer %  
-─────────────────────────────────────────────────────
-2026-03-18   3840 W    2%    84,9%  +20,2%   100,0% ↑
-2026-03-19   3580 W    84%   97,0%  +18,2%   100,0% ↑
-2026-03-20   2120 W    92%   95,8%   +8,5%    100,0%
-```
+### Příklad výstupu
+- zde [reálný výstup predikce - forecast.csv](https://github.com/outpost2026/Kazuistiky-LLM-sprint/blob/LFP_soc_predict_pipeline/forecast.csv)
 
 ## Závislosti
 
-- **Python 3.9+**
 - `pvlib-python` — Výpočty sluneční polohy
 - `pandas` — Manipulace s daty
 - `requests` — Volání Open-Meteo API
 - `numpy` — Numerické operace
 
-Úplný seznam viz `requirements.txt`.
-
 ---
-
-## Kalibrace a údržba
 
 ### Sezónní rekalibraci (Kritické)
 
@@ -211,20 +189,7 @@ Kalibrace je specifická pro **dočasnou zemní montáž na azimutu 173° JJV**.
 
 ---
 
-## Přispívání
-
-Jde o aktivní výzkumný projekt. Vítáme příspěvky pro:
-
-- Další algoritmy teréního maskování
-- Ensemble metody předpovědi počasí
-- Vylepšení modelu baterie
-- Překlady dokumentace (angličtina → čeština)
-
-Prosím otevřete issue před odesláním větších PR.
-
----
-
-## 📝 Licence
+## Licence
 
 MIT License — Viz soubor [LICENSE](LICENSE) pro detaily.
 
