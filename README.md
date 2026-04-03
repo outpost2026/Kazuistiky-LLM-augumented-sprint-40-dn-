@@ -211,9 +211,9 @@ Pokud tento systém používáte v publikacích, prosím citujte:
 ```bibtex
 @software{outpost_soc_2026,
   title={Outpost SOC Predictor: Predikce nabíjení LiFePO₄ s teréním maskováním},
-  author={[Autor jméno]},
+  author={[Ondřej Soušek]},
   year={2026},
-  url={https://github.com/yourusername/outpost-soc-predictor}
+  url={https://github.com/outpost2026}
 }
 ```
 
