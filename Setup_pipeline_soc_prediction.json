@@ -1,0 +1,134 @@
+{
+  "project": "Outpost SOC Predictor",
+  "version": "3.0",
+  "purpose": "Predikce denního přírůstku SOC baterie z meteorologických dat s LiDAR maskou horizontu",
+  "output": "Tabulka/JSON/CSV s ΔSOC a SOC konec na N dní",
+
+  "static_blueprint": {
+    "pipeline": {
+      "step_1_lidar_horizon": {
+        "script": "horizon_profile_outpost.py",
+        "input": ["DMR5.laz", "DMP.laz", "GPS_souradnice_FV_stredu"],
+        "output": "horizon_profile.json",
+        "run_once": true
+      },
+      "step_2_meteo_etl": {
+        "script": "outpost_meteo_etl_v3.py",
+        "input": ["horizon_profile.json", "Open-Meteo API"],
+        "output": "outpost_meteo_forecast.csv",
+        "schedule": "daily",
+        "key_modifications": [
+          "přidat hourly: shortwave_radiation, direct_radiation, diffuse_radiation",
+          "přidat past_days: 7",
+          "přidat pvlib výpočet solar_elevation, solar_azimuth",
+          "aplikovat masku: if elevation <= horizon → direct=0, shortwave=diffuse"
+        ]
+      },
+      "step_3_bms_ingest": {
+        "script": "data_ingestion_bridge.py",
+        "status": "not_implemented_yet",
+        "planned_hardware": ["USB-TTL (CP2102)", "nebo ESP32 BLE"],
+        "output": "bms.csv"
+      },
+      "step_4_prediction": {
+        "script": "soc_predict.py",
+        "input": ["bms.csv", "outpost_meteo_forecast.csv"],
+        "output": "forecast (table/json/csv)",
+        "model": "linear_v1",
+        "constants": {
+          "SLOPE": 0.00776,
+          "INTERCEPT": -9.55,
+          "CAPACITY_AH": 630
+        }
+      }
+    },
+    "model_equation": "ΔSOC_% = 0.00776 × rad_sum_Wh_m2 − 9.55",
+    "calibration_days": 6,
+    "calibration_period": "2026-03-11 to 2026-03-16",
+    "r_squared": 0.907,
+    "charging_threshold_Wh_m2_per_day": 1230,
+    "dependencies": {
+      "python_packages": ["pandas", "numpy", "pvlib", "anthropic", "openmeteo-requests", "retry-requests", "requests-cache", "laspy", "pyproj", "matplotlib", "scipy"],
+      "api_keys": ["ANTHROPIC_API_KEY"],
+      "external_data": ["ČÚZK LiDAR DMR5/DMP", "Open-Meteo API"]
+    },
+    "production_commands": {
+      "daily_forecast": "python outpost_meteo_etl_v3.py && python soc_predict.py --bms bms.csv --meteo outpost_meteo_forecast.csv --days 7 --format json > forecast.json",
+      "offline_mode": "python soc_predict.py --bms bms.csv --meteo outpost_meteo_forecast.csv --days 7 --no-api",
+      "regenerate_horizon": "python horizon_profile_outpost.py --dmr DMR5.laz --dmp DMP.laz --lat 50.15091783 --lon 14.42341845 --use-dmp-for-horizon"
+    },
+    "critical_limitations": [
+      "Kalibrováno pouze na březnových datech (6 dní) – nutná rekalibrace po 14+ dnech",
+      "Model platí jen pro dočasnou zemní montáž – po přesunu na střechu změnit konstanty",
+      "BMS ingest není automatizován – manuální sběr dat"
+    ],
+    "deployment_targets": [
+      "Windows 11 (Dell Latitude 5590) – lokální spouštění",
+      "GCP Cloud Run – plánováno"
+    ]
+  },
+
+  "dynamic_fuel": {
+    "description": "Proměnné, které musí být dodány v reálném čase – bez nich pipeline nevyprodukuje výsledek.",
+    "geographic_variables": {
+      "source": "ČÚZK LiDAR portál",
+      "files_needed": ["DMR5.laz", "DMP.laz"],
+      "coordinate_system": "S-JTSK (EPSG:5514)",
+      "required_metadata": {
+        "gps_lat": "50.15091783",
+        "gps_lon": "14.42341845",
+        "panel_height_agl_m": 1.5
+      },
+      "note": "Pro každou novou lokalitu je nutné stáhnout vlastní LiDAR data a spustit horizon_profile_outpost.py"
+    },
+    "meteorological_variables": {
+      "source": "Open-Meteo API (živá předpověď)",
+      "update_frequency": "denně",
+      "required_hourly_fields": [
+        "shortwave_radiation",
+        "direct_radiation",
+        "diffuse_radiation",
+        "cloud_cover"
+      ],
+      "time_range": "past_days=7, forecast_days=7",
+      "seasonality": "Model kalibrován na březen – pro jiné měsíce je třeba rekalibrace (změna SLOPE/INTERCEPT)"
+    },
+    "system_state_variables": {
+      "source": "BMS log (soubor bms.csv)",
+      "required_columns": [
+        "timestamp",
+        "Battery Current [A]",
+        "SOC Cap. Remain [Ah]",
+        "SOC Full Charge Cap. [Ah]"
+      ],
+      "critical_values": {
+        "current_soc_percent": "vypočítá se jako SOC Cap. Remain / SOC Full Charge Cap.",
+        "battery_health_soh": "výchozí 100% (630 Ah), ale s časem klesá – nutná aktualizace CAPACITY konstanty"
+      },
+      "note": "Bez aktuálního SOC (startovní čára) je predikce nemožná. Automatizace sběru (data_ingestion_bridge.py) není hotova – nyní manuální export z BMS."
+    },
+    "runtime_parameters": {
+      "forecast_days": "počet dní predikce (výchozí 7)",
+      "api_mode": "true/false (--no-api pro offline)",
+      "output_format": "table/json/csv"
+    }
+  },
+
+  "how_to_replicate_elsewhere": {
+    "step_by_step": [
+      "1. Získejte LiDAR DMR5 a DMP pro vaši lokalitu (ČÚZK nebo jiný národní portál).",
+      "2. Spusťte horizon_profile_outpost.py s vašimi GPS souřadnicemi → vytvořte horizon_profile.json.",
+      "3. Nainstalujte závislosti (viz dependencies).",
+      "4. Spouštějte denně: outpost_meteo_etl_v3.py (stáhne a zamaskuje předpověď) a poté soc_predict.py s vašimi BMS daty.",
+      "5. Pokud nemáte automatizovaný BMS log, exportujte ručně do bms.csv ve správném formátu.",
+      "6. Po 14+ dnech provozu překalibrujte SLOPE a INTERCEPT z nových dat."
+    ],
+    "expected_output_example": {
+      "date": "2026-03-18",
+      "rad_sum_Wh_m2": 3840,
+      "cloud_pct": 2,
+      "delta_soc_percent": 20.2,
+      "soc_evening_percent": 100.0
+    }
+  }
+}
