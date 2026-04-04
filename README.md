@@ -37,7 +37,7 @@ Pipeline se skládá ze tří hlavních produkčních skriptů:
 |--------|------|-------|--------|
 | **`outpost_meteo_etl_v3.py`** | ETL: stažení dat počasí, výpočet sluneční polohy, aplikace masky horizontu | Open-Meteo API | `outpost_meteo_forecast.csv` |
 | **`soc_predict.py`** | Predikce SOC kombinací BMS dat a maskovaných meteodat | BMS CSV + forecast | Tabulka / JSON / CSV |
-| **`horizon_profile_outpost.py`** | *Jednoraté nastavení* — vygeneruje profil horizontu z LiDAR dat | LAZ (DMR 5G) | `horizon_profile.json` |
+| **`horizon_profile_outpost.py`** | *Jednorázové nastavení* — vygeneruje profil horizontu z LiDAR dat | LAZ (DMR 5G) | `horizon_profile.json` |
 
 **⚠️ Poznámka:** Skript `data_ingestion_bridge.py` (automatizace BMS) je ve vývoji; sběr dat probíhá zatím manuálně přes BLE/USB.
 
