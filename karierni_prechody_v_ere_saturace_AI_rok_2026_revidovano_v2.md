@@ -200,7 +200,7 @@ Tato kazuistika je jeden datový bod. Není to důkaz. Je to případ, který st
 
 ---
 
-## Příloha A: Empirický fundament — co literatura říká
+## Příloha A: Empirický fundament — co říká literatura
 
 *Tato sekce shrnuje relevantní empirická pozorování a případy ze širšího kontextu. Slouží jako věcné ukotvení kazuistiky, nikoli jako její důkaz. Jednotlivá pozorování jsou konzistentní s tezemi dokumentu, ale nenahrazují systematický výzkum.*
 
